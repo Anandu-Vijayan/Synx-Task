@@ -1,7 +1,7 @@
-# MyApp
+# Synx-Task
 
 ## Overview
-MyApp is a scalable application built using the MERN stack, designed for high-traffic environments. The backend provides SaaS-based authentication, role-based access control (RBAC), user and organization management, messaging, and meeting scheduling features. It supports webhook triggers for external services and can be deployed in a serverless environment.
+Synx-Task is a scalable application built using the MERN stack, designed for high-traffic environments. The backend provides SaaS-based authentication, role-based access control (RBAC), user and organization management, messaging, and meeting scheduling features. It supports webhook triggers for external services and can be deployed in a serverless environment.
 
 ## Features
 - **Authentication (SaaS)**: User registration, login, and logout.
@@ -15,5 +15,5 @@ MyApp is a scalable application built using the MERN stack, designed for high-tr
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/your-repo/myapp.git
+   git clone https://github.com/your-repo/Synx-Task.git
    cd myapp
