@@ -4,13 +4,21 @@ import { addUser } from '../../features/user/userThunks';
 
 const UserForm = () => {
   const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [role, setRole] = useState('');
+  const [organization, setOrganization] = useState('');
   const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await dispatch(addUser({ name }));
+      await dispatch(addUser({ name, email, password, role, organization }));
       setName('');
+      setEmail('');
+      setPassword('');
+      setRole('');
+      setOrganization('');
     } catch (error) {
       console.error('User creation error:', error.message);
     }
@@ -24,7 +32,39 @@ const UserForm = () => {
         value={name}
         onChange={(e) => setName(e.target.value)}
         required
-        className="block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-400"
+        className="block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-400 mb-2"
+      />
+      <input
+        type="email"
+        placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        required
+        className="block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-400 mb-2"
+      />
+      <input
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        required
+        className="block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-400 mb-2"
+      />
+      <input
+        type="text"
+        placeholder="Role"
+        value={role}
+        onChange={(e) => setRole(e.target.value)}
+        required
+        className="block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-400 mb-2"
+      />
+      <input
+        type="text"
+        placeholder="Organization"
+        value={organization}
+        onChange={(e) => setOrganization(e.target.value)}
+        required
+        className="block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-400 mb-2"
       />
       <button
         type="submit"

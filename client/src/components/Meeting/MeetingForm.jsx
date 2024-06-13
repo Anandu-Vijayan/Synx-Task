@@ -4,13 +4,19 @@ import { scheduleMeeting } from '../../features/meeting/meetingThunks';
 
 const MeetingForm = () => {
   const [title, setTitle] = useState('');
+  const [organizer, setOrganizer] = useState('');
+  const [participants, setParticipants] = useState('');
+  const [time, setTime] = useState('');
   const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await dispatch(scheduleMeeting({ title }));
+      await dispatch(scheduleMeeting({ title, organizer, participants, time }));
       setTitle('');
+      setOrganizer('');
+      setParticipants('');
+      setTime('');
     } catch (error) {
       console.error('Meeting scheduling error:', error.message);
     }
@@ -24,7 +30,30 @@ const MeetingForm = () => {
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         required
-        className="block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-400"
+        className="block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-400 mb-2"
+      />
+      <input
+        type="text"
+        placeholder="Organizer"
+        value={organizer}
+        onChange={(e) => setOrganizer(e.target.value)}
+        required
+        className="block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-400 mb-2"
+      />
+      <input
+        type="text"
+        placeholder="Participants (comma separated)"
+        value={participants}
+        onChange={(e) => setParticipants(e.target.value)}
+        required
+        className="block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-400 mb-2"
+      />
+      <input
+        type="datetime-local"
+        value={time}
+        onChange={(e) => setTime(e.target.value)}
+        required
+        className="block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-400 mb-2"
       />
       <button
         type="submit"
